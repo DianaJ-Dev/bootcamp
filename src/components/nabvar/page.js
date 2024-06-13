@@ -2,8 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+
 export default function NavbarHome() {
     return (
+    <div >
     <Navbar expand="lg" className="bg-body-tertiary">
     <Container fluid>
       <Navbar.Brand href="#">Happy Travels</Navbar.Brand>
@@ -23,5 +25,6 @@ export default function NavbarHome() {
       </Navbar.Collapse>
     </Container>
   </Navbar>
+  </div>
 );
 }

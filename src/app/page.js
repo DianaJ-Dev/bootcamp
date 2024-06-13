@@ -1,5 +1,5 @@
 'use client'
-
+import styles from "./page.module.css";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -11,13 +11,13 @@ export default function Home() {
   
   return (
     <>
-    <NavbarHome/>
-    <Form>
-      <FloatingLabel  className="mb-3" controlId="exampleForm.ControlInput1">
+    <NavbarHome className={styles.navbar} />
+    <Form className={styles.home}> 
+      <FloatingLabel  className="mb-3 mx-5" controlId="exampleForm.ControlInput1">
         <Form.Label> Destino </Form.Label>
         <Form.Control required type="text" placeholder="Lugar a visitar" defaultValue=""/>
       </FloatingLabel>
-      <FloatingLabel  className="mb-3" controlId="exampleForm.ControlTextarea1">
+      <FloatingLabel  className="mb-3 mx-5" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Itinerario</Form.Label>
         <Form.Control as="textarea" rows={3} />
       </FloatingLabel>

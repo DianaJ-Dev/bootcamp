@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useInputHook } from 'happy-travels/hooks/use-input-hook';
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react';
+import styles from "./changePassword.module.css";
 
 
 export default function ChangePassword() {
@@ -49,12 +50,12 @@ export default function ChangePassword() {
   }
 
     return (
-    <>
-      <h1>Happy Travels</h1>
-      <h4>Cambiar contarseña</h4>
+    <div className={styles.changePassword}>
+      <h1 className={styles.title}>Happy Travels</h1>
+      <h4 className={styles.change}>Cambiar contarseña</h4>
 
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <FloatingLabel controlId="floatingInput" label="Ingresa Correo" className="mb-3">
+      <FloatingLabel controlId="floatingInput" label="Ingresa Correo" className="mb-3  mx-5">
           <Form.Control
             type="email"
             placeholder="name@example.com"
@@ -98,10 +99,10 @@ export default function ChangePassword() {
             Contraseña no coinciden 
       </Form.Control.Feedback> 
 
-      <Button variant="primary" type="submit">Enviar</Button>
+      <Button variant="primary" type="submit" className={styles.button}>Enviar</Button>
       </FloatingLabel>
       </Form> 
-    </>
+    </div>
 
     )
 } 

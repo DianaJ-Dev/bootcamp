@@ -49,10 +49,10 @@ export default function Login () {
   }
 
     return (
-      <>
-      <h1>Happy Travels</h1>
-      <Form noValidate validated={validated} onSubmit={handleSubmit} className="formLogin">
-        <FloatingLabel controlId="email" label="Ingresa Correo" className="mb-3">
+      <div className={styles.imgForm}>
+      <h1 className={styles.title}>Happy Travels</h1>
+      <Form noValidate className={styles.formLogin} validated={validated} onSubmit={handleSubmit} >
+        <FloatingLabel  controlId="email" label="Ingresa Correo" className="mb-3  mx-5">
           <Form.Control
             type="email"
             placeholder="name@example.com"
@@ -79,15 +79,17 @@ export default function Login () {
             Por favor ingrese la contraseña de manera correcta
         </Form.Control.Feedback> 
 
-          <Button variant="primary" type="submit" >
+          <Button className={styles.buttonLogin} variant="primary" type="submit" >
             Ingresar
           </Button>
         </FloatingLabel>
       </Form>
 
+      <div className={styles.linkLogin}>
       <Link href={'/changePassword'}>Olvido o Bloqueo la contraseña</Link>
       <Link href={'/register'}>Registrarse</Link>
-    </>
+      </div>        
+    </div>
 
     )
 } 

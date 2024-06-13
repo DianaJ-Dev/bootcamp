@@ -62,7 +62,8 @@ export default function Register () {
       }
 
     return (
-    <>
+    <div className={styles.register}>    
+    <h4 className={styles.title}>Ingresar datos de registro </h4>    
     <Form className={styles.formRegister} noValidate validated={validated} onSubmit={handleSubmit} >
     <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
@@ -131,6 +132,6 @@ export default function Register () {
         <Button variant="primary" type="submit">Enviar</Button>
 
     </Form>
-    </>
+    </div>
     )
 } 
