@@ -1,5 +1,5 @@
 'use client'
-
+import styles from "./register.module.css";
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
@@ -51,15 +51,7 @@ export default function Register () {
     const handleSubmit = (e) => {
         const form = e.currentTarget
         e.preventDefault();
-        console.log(email)
-        console.log(password)
-        console.log(name)
-        console.log(lastName)
-        console.log(numberId)
-        console.log(phone)
-        console.log(address) 
 
-    
         if(!form.checkValidity()){
           setValidated(true);
         }else{
@@ -71,7 +63,7 @@ export default function Register () {
 
     return (
     <>
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form className={styles.formRegister} noValidate validated={validated} onSubmit={handleSubmit} >
     <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Correo</Form.Label>

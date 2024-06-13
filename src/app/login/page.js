@@ -1,5 +1,5 @@
 'use client'
-
+import styles from "./login.module.css";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -51,7 +51,7 @@ export default function Login () {
     return (
       <>
       <h1>Happy Travels</h1>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleSubmit} className="formLogin">
         <FloatingLabel controlId="email" label="Ingresa Correo" className="mb-3">
           <Form.Control
             type="email"

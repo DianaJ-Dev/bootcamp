@@ -1,8 +1,14 @@
+'use client'
+
+import Footer from "happy-travels/components/footer/page";
+import NavbarHome from "happy-travels/components/nabvar/page";
+
 export default function Layout({ children }) {
     return (
       <main>
-        <nav>Product navigation</nav>
+        <NavbarHome/>
         {children}
+        <Footer/>
       </main>
     );
   }
