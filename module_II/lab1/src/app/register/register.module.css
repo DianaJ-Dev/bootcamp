@@ -1,0 +1,25 @@
+
+.formRegister{
+    margin: 10%;
+}
+
+@media screen and (max-width: 650px){
+    .register{
+        background-color: rgb(125, 180, 210);
+        background-size: cover;
+        height: 650px;
+        width: 100%;
+        margin:0%
+    }
+}
+
+
+
+@media screen and (min-width: 321px) and (max-width: 480px){
+    .register{
+        background-size: cover;
+        height: 650px;
+        width: 100%;
+        margin:0%
+    }
+}   
