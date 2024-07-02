@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "happy-travels/*": ["./src/*"]
-    }
-  }
-}
