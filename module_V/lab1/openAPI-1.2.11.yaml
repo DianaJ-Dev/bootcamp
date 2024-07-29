@@ -1,0 +1,314 @@
+openapi: 3.0.3
+info: 
+    title: Swagger for ProductWeb
+    version: 1.2.7
+    description: Swagger for API by ProductWeb
+    contact: 
+      email: juliethdiana123@gmail.com
+      name: Diana Matamoros 
+    license: 
+        name: Apache 2.0
+        url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+    - url: 'http://localhost:3000/api/v1'
+    - url: 'http://172.10.10.1:3000/api/v1'
+tags:
+    - name: products
+      description: Operations about product
+paths:
+  /products:
+    get:
+      tags:
+        - product
+      summary:
+        Get all products 
+      description:
+        Get all products in active status
+      operationId: getAllProduct
+      responses:
+        '200':
+          description: successful operationSku
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref : '#/components/schemas/ProductDetailResponse'
+        '401':
+          description: Invalid Token
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'          
+        '404':
+          description: Product Not Found
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /product/create:
+    post:
+      tags: 
+        - product
+      summary: Create product
+      description:  This service for create product
+      operationId: createProduct
+      requestBody:
+        description: Created product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreateRequest'
+        required: true
+      responses:
+        '201':
+          description: successful user create 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCreateResponse'
+        '400':
+          description: Bad request 
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/BadRequestError' 
+        '401':
+          description: Invalid Token
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'        
+        '404':
+          description: Not Found
+          content:
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/NotFoundError'
+  /product/{sku}/detail:
+    get:
+      tags:
+        - product
+      summary: Get detail product
+      description: Detail product in the platform
+      operationId: GetDetailProduct
+      parameters:
+        - name: sku
+          in: path
+          description: show selected product detail
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: successful operationSku
+          content:
+            application/json:
+              schema:
+                $ref : '#/components/schemas/ProductDetailResponse'
+        '401':
+          description: Invalid Token
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'        
+        '404':
+          description: Sku Not Found
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /product/{sku}/update:
+    put:
+      tags:
+        - product
+      summary: edit product
+      description: When updating the product, you will not be able to edit the SKU.
+      operationId: updateUserByProduct
+      parameters:
+        - name: sku
+          in: path
+          description: The email that need to be fetched.
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdateRequest'
+      responses:
+        '200':
+          description: successful operationId
+          content:
+            application/json:
+              schema:
+                $ref : '#/components/schemas/ProductDetailResponse'
+        '401':
+          description: Invalid Token
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'         
+        '404':
+          description: Users Not Found
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/NotFoundError' 
+  /product/{sku}/delete:
+    delete:
+      tags:
+        - product
+      summary: Soft Delete user by price
+      description: Soft delete User by price.
+      operationId: deleteUserByPrice
+      parameters:
+        - name: sku
+          in: path
+          description: remove product
+          required: true
+          schema: 
+            type: string 
+      responses:
+        '200':
+          description: Delete 
+          content: { }
+        '401':
+          description: Invalid user
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '404':
+          description: Users Not Found
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/NotFoundError'                
+components:
+  schemas:
+    ProductDetailResponse:
+      type: object
+      properties:
+        name: 
+          type: string
+          description: Name of product
+        typeOfProduct:
+          type: string
+          description: Type of product
+        price: 
+          type: number
+          description: Price of product
+        sku:
+          type: number
+          description: Reference number
+        provider:
+          type: string
+          description: Provider product
+        coordinates:
+          type: object
+          description: GEO coordinates of product location
+          properties:
+            latitude:
+              type: number
+              format: float
+              description: Latitude of the product location
+            longitude:
+              type: number
+              format: float
+              description: Longitude of the product location
+        ative:
+          type: boolean 
+    ProductCreateRequest:   
+      type: object
+      properties:
+        name: 
+          type: string
+          description: Name of product
+        typeOfProduct:
+          type: string
+          description: Type of product
+        price: 
+          type: number
+          description: Price of product
+        sku:
+          type: number
+          description: Reference number
+        provider:
+          type: string
+          description: Provider product
+        coordinates:
+          type: object
+          description: GEO coordinates of product location
+          properties:
+            latitude:
+              type: number
+              format: float
+              description: Latitude of the product location
+            longitude:
+              type: number
+              format: float
+              description: Longitude of the product location
+    ProductCreateResponse:
+      type: object
+      properties: 
+        message: 
+          type: string
+          description: successful create product   
+    ProductUpdateRequest:
+      type: object
+      properties:
+        name: 
+          type: string
+          description: Name of product
+        typeOfProduct:
+          type: string
+          description: Type of product
+        price: 
+          type: number
+          description: Price of product
+        provider:
+          type: string
+          description: Provider product
+        coordinates:
+          type: object
+          description: GEO coordinates of product location
+          properties:
+            latitude:
+              type: number
+              format: float
+              description: Latitude of the product location
+            longitude:
+              type: number
+              format: float
+              description: Longitude of the product location
+    UnauthorizedError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Invalid        
+    NotFoundError:
+      type: object
+      properties:
+        code:
+          type: number
+          description: HTTP Status 404
+        message:
+          type: string
+          description: Not found
+    BadRequestError:
+      type: object
+      properties: 
+        code:
+          type: number
+          description: HTTP Status 400
+        message:
+          type: string
+          description: message for error description
+      
+        
+      
+    
