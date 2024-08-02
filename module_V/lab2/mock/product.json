@@ -1,0 +1,4 @@
+[{"name": "Nevera","typeOfProduct": "Electronics","price": 1600000,"sku": 12345,"provider": "Samsung","coordinates": {"latitude": 61,"longitude": 120}},
+{"name": "Camisa","typeOfProduct": "Clothing","price": 60000,"sku": 1234556,"provider": "nike","coordinates": {"latitude": 10,"longitude": 15}},
+{"name": "Televisor","typeOfProduct": "Electronics","price": 800000,"sku": 122344,"provider": "Asus","coordinates": {"latitude": 65,"longitude": 4}}
+]
