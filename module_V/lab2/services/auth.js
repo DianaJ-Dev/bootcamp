@@ -1,14 +1,33 @@
 const Promise = require('bluebird');
-const users = require('../mocks/users.json');
+var jwt = require('jsonwebtoken');
+
+const config = require('../middlewares/config.json');
+const users = require('../mock/users.json');
 
 const error = {error: 'User not found'};
 
 const login = async (email, password) => {
   return new Promise((resolve, reject) => {
-    let user = {...users[100]};
-    user.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-    console.log(user);
-    resolve(user);
+    const userAuth = users[110]; //ToDo: remove when the DB implemented
+    userAuth.token = jwt.sign(
+      {
+        sub:
+          {
+            email: email,
+            first_name: userAuth.first_name,
+            last_name: userAuth.last_name,
+            locale: 'CO',
+            roles: {
+              is_admin: true,
+              is_user: true
+            }
+          }
+      },
+      config.secret,
+      {expiresIn: '1m'}
+    );
+    
+    resolve(userAuth);
     reject(error);
   });
 };

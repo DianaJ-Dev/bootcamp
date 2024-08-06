@@ -13,14 +13,14 @@ const getAllProductService = async function() {
 const createProductService = async function (productParam) {
   return new Promise(function(resolve, reject) {
     console.log(productParam);
-    resolve({message: `the user create is: ${JSON.stringify(product[5])}`}); //ToDo: remove when the DB implemented
+    resolve({message: `the product create is: ${JSON.stringify(product[2])}`}); //ToDo: remove when the DB implemented
     reject(error);
   });
 };  
 
 const getDetailProductService = async function (sku) {
   return new Promise(function(resolve, reject) {
-    resolve(users[100]); //ToDo: remove when the DB implemented
+    resolve(product[1]); //ToDo: remove when the DB implemented
     reject(error);
   });
 };
@@ -28,7 +28,7 @@ const getDetailProductService = async function (sku) {
 const updateProductBySkuService = async function (sku, productParam) {
   return new Promise(function(resolve, reject) {
     //ToDo: remove when the DB implemented
-    var userUpdate = {...users[120], ...userParam};
+    var userUpdate = {...product[1], ...userParam};
     resolve(userUpdate);
     reject(error);
   });
