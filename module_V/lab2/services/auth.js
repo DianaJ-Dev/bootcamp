@@ -24,7 +24,7 @@ const login = async (email, password) => {
           }
       },
       config.secret,
-      {expiresIn: '1m'}
+      {expiresIn: '5m'}
     );
     
     resolve(userAuth);

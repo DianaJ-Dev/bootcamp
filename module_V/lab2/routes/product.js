@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var productServices = require('../services/product')
+const verifyToken = require('../middlewares/authMiddleware')
 
 const getAllProductController = function (req, res, next) {
     productServices.getAllProductService()
@@ -34,10 +35,10 @@ const deleteByskuController = function( req, res){
 }
 
 
-router.get('/', getAllProductController);
-router.post('/create', createProductController);
-router.get('/:sku/detail', getDetailProductController);
-router.put('/:sku/update', updateUserByProductController);
-router.delete('/:sku/delete', deleteByskuController)
+router.get('/', verifyToken, getAllProductController);
+router.post('/create', verifyToken,createProductController);
+router.get('/:sku/detail', verifyToken, getDetailProductController);
+router.put('/:sku/update', verifyToken, updateUserByProductController);
+router.delete('/:sku/delete', verifyToken, deleteByskuController)
 
 module.exports = router;

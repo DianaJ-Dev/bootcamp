@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var userServices = require('../services/users');
+const verifyToken = require('../middlewares/authMiddleware')
 
 /**
  * @method
@@ -78,10 +79,10 @@ const deleteUserByEmailController = function (req, res, next) {
  * @description This definition section is responsible for indicating the methods or verbs that HTTP uses to receive
  * the Request and its respective Response.
  */
-router.get('/', getAllUsersController);
+router.get('/', verifyToken, getAllUsersController);
 router.post('/create', createUserController);
-router.get('/:email/detail', getUserByEmailController);
-router.put('/:email/update', updateUserByEmailController);
-router.delete('/:email/delete', deleteUserByEmailController);
+router.get('/:email/detail', verifyToken, getUserByEmailController);
+router.put('/:email/update', verifyToken ,updateUserByEmailController);
+router.delete('/:email/delete', verifyToken, deleteUserByEmailController);
 
 module.exports = router;
