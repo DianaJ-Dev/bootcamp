@@ -17,7 +17,7 @@ tags:
       description: Operations about users
     - name: authentication/authorization
       description: Operations about auth & auth
-    - name: products
+    - name: product
       description: Operations about product  
 paths:
   /users:
@@ -239,7 +239,7 @@ paths:
             application/json: 
               schema:
                 $ref: '#/components/schemas/NotFoundError'
-  /products:
+  /product:
     get:
       tags:
         - product
@@ -386,7 +386,7 @@ paths:
         - product
       summary: Soft Delete user by price
       description: Soft delete User by price.
-      operationId: deleteUserByPrice
+      operationId: deleteBysku
       parameters:
         - name: sku
           in: path

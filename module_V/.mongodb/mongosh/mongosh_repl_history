@@ -1,0 +1,8 @@
+db.users.find().count()
+db.users.find()
+show collections
+use bootcamp
+docker exec -i mongobootcamp sh -c "mongoimport -c users -d bootcamp --jsonArray --drop" < users.json
+show collections
+show collection
+db.createColl
